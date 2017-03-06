@@ -1,0 +1,76 @@
+const byte startPin = 2;
+const byte endPin = 9;
+
+void setup() 
+{
+			// 將每個 Pin 設定成輸出
+	for (byte i = startPin; i<= endPin; i++) 
+	{
+		pinMode(i, OUTPUT);
+	}
+}
+void loop()
+{
+	byte i,j;
+	byte lightPin = startPin;
+			// 所有 LED OFF
+	for(j=0;j<2;j++)
+	{
+		for (i=startPin; i<= endPin; i++) 
+		{
+			digitalWrite(i,HIGH);
+		}
+		delay(1000);
+		for (i=endPin; i>=startPin; i--) 
+		{
+			digitalWrite(i,LOW);
+		}
+		delay(1000);
+	}
+			
+	for(i=startPin; i<= endPin; i++)
+	{
+		digitalWrite(lightPin, HIGH);
+		delay(100);
+		digitalWrite(lightPin, LOW);
+		if (lightPin < endPin) 
+		{
+			lightPin ++;
+		} 
+		else 
+		{
+			lightPin = endPin;
+		}
+		delay(100);
+	}
+	
+	for(j=0;j<2;j++)
+	{
+		for (i=startPin; i<= endPin; i++) 
+		{
+			digitalWrite(i,HIGH);
+		}
+		delay(1000);
+		for (i=endPin; i>=startPin; i--) 
+		{
+			digitalWrite(i,LOW);
+		}
+		delay(1000);
+	}
+	
+	for(i=endPin; i>= startPin; i--)
+	{
+		digitalWrite(lightPin, HIGH);
+		delay(100);
+		digitalWrite(lightPin, LOW);
+		if (lightPin > startPin) 
+		{
+			lightPin --;
+		} 
+		else 
+		{
+			lightPin = startPin;
+		}
+		delay(100);
+	}
+}
